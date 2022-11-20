@@ -27,14 +27,15 @@ jobs:
   Build:
     needs: Check
     if: ${{ github.repository_owner == 'Armbian' && contains( github.event.pull_request.labels.*.name, 'Ready :arrow_right:') }}
-    uses: armbian/scripts/.github/workflows/build-kernel.yml@master
+    uses: armbian/scripts/.github/workflows/build-kernel.yml@AR-1407
 
     with:
 
       uploading: "false"
       runner: "fast"
       artifacts: "true"
-      reference: ${{ github.event.pull_request.head.sha }}
+      #reference: ${{ github.event.pull_request.head.sha }}
+      reference: "AR-1407"
 
     secrets:
       GPG_KEY1: ${{ secrets.GPG_KEY1 }}
